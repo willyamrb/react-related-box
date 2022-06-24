@@ -1,4 +1,4 @@
 export {
-  default as StandardSlider,
-  StandardSliderProps,
-} from "./standard-slider/StandardSlider";
+  default as RelatedBox,
+  RelatedBoxProps,
+} from "./related-box/RelatedBox";
