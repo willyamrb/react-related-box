@@ -11,7 +11,7 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof RelatedBox> = (args) => {
-  const allData = ["ab", "bc", "cd", "ba"];
+  const allData = ["will", "mathew", "john", "maria"];
 
   const [query, setQuery] = useState("");
 
@@ -23,11 +23,11 @@ const Template: ComponentStory<typeof RelatedBox> = (args) => {
         placeholder="Type something..."
         onChange={(v) => setQuery(v)}
       />
-      <RelatedBox.SuggestionsBox onSelect={(i) => console.log(i)}>
-        {filteredData.map((d) => (
-          <RelatedBox.SuggestionItem key={d}>{d}</RelatedBox.SuggestionItem>
-        ))}
-      </RelatedBox.SuggestionsBox>
+      <RelatedBox.SuggestionsBox
+        data={filteredData}
+        onSelectItem={(i) => console.log(i)}
+        renderItem={(v) => <div style={{ padding: "5px 0px" }}>{v}</div>}
+      />
     </RelatedBox>
   );
 };

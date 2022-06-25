@@ -25,7 +25,7 @@ export interface RelatedBoxProps extends React.FC<RelatedBoxComponentProps> {
 
 const RelatedBox: RelatedBoxProps = ({ children }) => {
   if (!Array.isArray(children))
-    throw new Error("Must be more than 1 children!");
+    throw new Error("Must be more than 1 child inside RelatedBox Component!");
 
   const textInput = children.find(
     (d) => (d.type as any).displayName === "RelatedBoxTextInput"
@@ -44,15 +44,12 @@ const RelatedBox: RelatedBoxProps = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <div className="related-box">
-      {React.cloneElement<RelatedBoxTextInputProps>(textInput, {
-        ...textInput.props,
-        onFocus: onOpen,
-        onBlur: onClose,
-      })}
+    <div className="related-box" tabIndex={1} onFocus={onOpen} onBlur={onClose}>
+      {React.cloneElement<RelatedBoxTextInputProps>(textInput)}
       {React.cloneElement<RelatedBoxSuggestionsBoxProps>(suggestionsBox, {
         ...suggestionsBox.props,
         isOpen,
+        onClose,
       })}
     </div>
   );

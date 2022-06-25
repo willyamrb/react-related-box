@@ -5,42 +5,49 @@ import RelatedBoxSuggestionItem, {
 
 export interface RelatedBoxSuggestionsBoxProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "onSelect"> {
-  onSelect: (value: number) => void;
-  children: React.ReactElement<RelatedBoxSuggestionItemProps>[];
+  onSelectItem?: (value: any) => void;
   isOpen?: boolean;
+  onClose?: () => void;
+  data: any[];
+  maxItems?: number;
+  renderItem: (value: any) => React.ReactElement<RelatedBoxSuggestionItemProps>;
 }
 
 const RelatedBoxSuggestionsBox: React.FC<RelatedBoxSuggestionsBoxProps> = ({
-  onSelect = () => null,
-  children,
+  onSelectItem = () => null,
+  data,
   isOpen,
+  onClose = () => null,
+  renderItem,
+  maxItems = 4,
   ...rest
 }) => {
-  const items = children.filter(
-    (d) => (d.type as any).displayName === "RelatedBoxSuggestionItem"
-  );
-
-  if (items.length !== children.length)
-    throw new Error(
-      "All itens inside RelatedBox.SuggestionsBox must be a RelatedBox.SuggestionItem, if you want a custom item use the property customItem prop from RelatedBox.SuggestionItem"
-    );
+  const onSelect = (value: any) => {
+    onSelectItem(value);
+    onClose();
+  };
 
   return (
-    <div
-      className="related-suggestions-box"
-      {...rest}
-      tabIndex={100}
-      style={{
-        visibility: isOpen && children.length > 0 ? "visible" : "hidden",
-      }}
-    >
-      <div className="related-suggestions-box-items">
-        {children.map((d, i) =>
-          React.cloneElement<RelatedBoxSuggestionItemProps>(d, {
-            ...d.props,
-            onClick: () => onSelect(i),
-          })
-        )}
+    <div className="related-suggestions-box">
+      <div
+        className="related-suggestions-box-items"
+        {...rest}
+        style={{
+          visibility: isOpen && data.length > 0 ? "visible" : "hidden",
+        }}
+      >
+        {data
+          .filter((_, i) => i < maxItems)
+          .map((d, i) =>
+            React.createElement<RelatedBoxSuggestionItemProps>(
+              RelatedBoxSuggestionItem,
+              {
+                key: i,
+                onClick: () => onSelect(data[i]),
+              },
+              renderItem(d)
+            )
+          )}
       </div>
     </div>
   );
