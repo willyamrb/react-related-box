@@ -1,7 +1,7 @@
 {
-  "name": "sliderbrew",
+  "name": "react-related-box",
   "version": "0.0.1",
-  "description": "A React library to work with sliders",
+  "description": "A React Component to help with complex search inputs",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [
