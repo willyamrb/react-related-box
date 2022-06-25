@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { forwardRef, InputHTMLAttributes, LegacyRef } from "react";
 import useTypeDelay from "../../hooks/useTypeDelay.hook";
 
 export interface RelatedBoxTextInputProps
@@ -8,12 +8,15 @@ export interface RelatedBoxTextInputProps
   typeDelay?: number;
 }
 
-const RelatedBoxTextInput: React.FC<RelatedBoxTextInputProps> = ({
-  customComponent,
-  onChange = (v: string) => null,
-  typeDelay = 1200,
-  ...rest
-}) => {
+const RelatedBoxTextInput = (
+  {
+    customComponent,
+    onChange = () => null,
+    typeDelay = 1200,
+    ...rest
+  }: RelatedBoxTextInputProps,
+  ref: LegacyRef<HTMLInputElement>
+) => {
   const { data, setData } = useTypeDelay({
     delay: typeDelay,
     callback: (data) => {
@@ -34,9 +37,12 @@ const RelatedBoxTextInput: React.FC<RelatedBoxTextInputProps> = ({
         {...rest}
         onChange={(e) => setData(e.target.value)}
         value={data}
+        ref={ref}
       />
     );
   }
 };
 
-export default RelatedBoxTextInput;
+export default forwardRef<HTMLInputElement, RelatedBoxTextInputProps>(
+  RelatedBoxTextInput
+);

@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof RelatedBox> = (args) => {
   const filteredData = allData.filter((d) => d.startsWith(query));
 
   return (
-    <RelatedBox {...(args as any)}>
+    <RelatedBox {...args}>
       <RelatedBox.InputText
         placeholder="Type something..."
         onChange={(v) => setQuery(v)}
