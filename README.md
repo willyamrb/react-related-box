@@ -62,10 +62,8 @@ RelatedBox.InputText contains all properties from normal JSX input component but
 
 RelatedBox.SuggestionsBox contains all properties from normal JSX div component but with some additionals
 
-| property | required | type  | default | description                                    |
-| :------- | :------- | :---- | :------ | :--------------------------------------------- |
-| data     | ✅       | any[] | none    | This property refers to suggestions availables |
-
-| renderItem | ✅ | (value: any) => React.ReactElement<RelatedBoxSuggestionItemProps> | none | This property refers to the component of each suggestion item, it return a property value that represent a item from data property, that way you can specify each property you want to use. |
-|
-| maxItems | ❌ | number | 4 | This property refers to the max items from property data that will be presented as suggestions |
+| property   | required | type                               | default | description                                                                                                                                                                                 |
+| :--------- | :------- | :--------------------------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| data       | ✅       | any[]                              | none    | This property refers to suggestions availables                                                                                                                                              |
+| renderItem | ✅       | (value: any) => React.ReactElement | none    | This property refers to the component of each suggestion item, it return a property value that represent a item from data property, that way you can specify each property you want to use. |
+| maxItems   | ❌       | number                             | 4       | This property refers to the max items from property data that will be presented as suggestions                                                                                              |
