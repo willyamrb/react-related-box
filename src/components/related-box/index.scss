@@ -29,16 +29,13 @@
 
 .related-suggestions-box-items {
   background-color: white;
-  position: absolute;
   width: 100%;
-  left: 0;
   top: 5px;
   padding: 8px;
   border-radius: 8px;
   -webkit-box-shadow: 0px 0px 21px -7px rgba(0, 0, 0, 0.63);
   -moz-box-shadow: 0px 0px 21px -7px rgba(0, 0, 0, 0.63);
   box-shadow: 0px 0px 21px -7px rgba(0, 0, 0, 0.63);
-  z-index: 100;
   max-height: 400px;
 }
 

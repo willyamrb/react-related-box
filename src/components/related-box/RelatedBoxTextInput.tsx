@@ -3,14 +3,14 @@ import useTypeDelay from "../../hooks/useTypeDelay.hook";
 
 export interface RelatedBoxTextInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
-  customComponent?: React.ReactElement<InputHTMLAttributes<HTMLInputElement>>;
+  customInput?: React.ReactElement<InputHTMLAttributes<HTMLInputElement>>;
   onChange?: (value: string) => void;
   typeDelay?: number;
 }
 
 const RelatedBoxTextInput = (
   {
-    customComponent,
+    customInput,
     onChange = () => null,
     typeDelay = 1200,
     ...rest
@@ -24,9 +24,9 @@ const RelatedBoxTextInput = (
     },
   });
 
-  if (customComponent) {
-    return React.cloneElement(customComponent, {
-      ...customComponent.props,
+  if (customInput) {
+    return React.cloneElement(customInput, {
+      ...customInput.props,
       onChange: (e) => setData(e.target.value),
       value: data,
     });

@@ -4,8 +4,8 @@ import RelatedBoxSuggestionItem, {
 } from "./RelatedBoxSuggestionItem";
 
 export interface RelatedBoxSuggestionsBoxProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "onSelect"> {
-  onSelectItem?: (value: any) => void;
+  extends HTMLAttributes<HTMLDivElement> {
+  onSelectItem: (value: any) => void;
   isOpen?: boolean;
   onClose?: () => void;
   data: any[];
@@ -33,7 +33,11 @@ const RelatedBoxSuggestionsBox: React.FC<RelatedBoxSuggestionsBoxProps> = ({
         className="related-suggestions-box-items"
         {...rest}
         style={{
+          ...rest.style,
           visibility: isOpen && data.length > 0 ? "visible" : "hidden",
+          position: "absolute",
+          zIndex: "100",
+          left: 0,
         }}
       >
         {data

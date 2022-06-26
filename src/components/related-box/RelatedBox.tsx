@@ -7,9 +7,6 @@ import RelatedBoxSuggestionsBox, {
   RelatedBoxSuggestionsBoxProps,
 } from "./RelatedBoxSuggestionsBox";
 import useDisclosure from "../../hooks/useDisclosure.hook";
-import RelatedBoxSuggestionItem, {
-  RelatedBoxSuggestionItemProps,
-} from "./RelatedBoxSuggestionItem";
 
 interface RelatedBoxComponentProps {
   children: React.ReactElement<
@@ -20,19 +17,16 @@ interface RelatedBoxComponentProps {
 export interface RelatedBoxProps extends React.FC<RelatedBoxComponentProps> {
   InputText: React.FC<RelatedBoxTextInputProps>;
   SuggestionsBox: React.FC<RelatedBoxSuggestionsBoxProps>;
-  SuggestionItem: React.FC<RelatedBoxSuggestionItemProps>;
 }
 
 const RelatedBox: RelatedBoxProps = ({ children }) => {
   if (!Array.isArray(children))
     throw new Error("Must be more than 1 child inside RelatedBox Component!");
 
-  const textInput = children.find(
-    (d) => (d.type as any).displayName === "RelatedBoxTextInput"
-  );
+  const textInput = children.find(({ type }) => type === RelatedBoxTextInput);
 
   const suggestionsBox = children.find(
-    (d) => (d.type as any).displayName === "RelatedBoxSuggestionsBox"
+    ({ type }) => type === RelatedBoxSuggestionsBox
   );
 
   if (!textInput)
@@ -57,6 +51,5 @@ const RelatedBox: RelatedBoxProps = ({ children }) => {
 
 RelatedBox.InputText = RelatedBoxTextInput;
 RelatedBox.SuggestionsBox = RelatedBoxSuggestionsBox;
-RelatedBox.SuggestionItem = RelatedBoxSuggestionItem;
 
 export default RelatedBox;
