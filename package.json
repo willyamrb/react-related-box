@@ -1,6 +1,6 @@
 {
   "name": "react-related-box",
-  "version": "0.0.1",
+  "version": "0.0.10",
   "description": "A React Component to help with complex search inputs",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -15,6 +15,10 @@
     "build-storybook": "build-storybook"
   },
   "author": "willyamdev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willyamdev/react-related-box"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -58,14 +62,20 @@
     "style-loader": "^3.3.1",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5",
-    "webpack": "^5.69.1"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "webpack": "^5.69.1",
+    "react": ">=17",
+    "react-dom": ">=17"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "keywords": [
+    "react",
+    "input",
+    "suggestions",
+    "text",
+    "search",
+    "find"
+  ]
 }
