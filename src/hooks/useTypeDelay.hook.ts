@@ -15,9 +15,7 @@ const useTypeDelay = ({
 
   useEffect(() => {
     const delayTimer = setTimeout(() => {
-      if (data.trim() !== "") {
-        callback(data);
-      }
+      callback(data);
     }, delay);
 
     return () => {
