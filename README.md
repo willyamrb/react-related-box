@@ -22,7 +22,7 @@ yarn add react-related-box
 
 This is the base component of this library, inside every RelatedBox component needs to be 2 other components, the RelatedBox.InputText and RelatedBox.SuggestionsBox, they complete the search input structure to work as expected.
 
-If one of these componenets is not declared inside RelatedBox componenet it will result an error, they are not opitional, they are required.
+If one of these components is not declared inside RelatedBox component it will result an error, they are not opitional, they are required.
 
 ```jsx
 import React from "react";
@@ -62,8 +62,10 @@ RelatedBox.InputText contains all properties from normal JSX input component but
 
 RelatedBox.SuggestionsBox contains all properties from normal JSX div component but with some additionals
 
-| property   | required | type                                                              | default | description                                                                                                                                                                                 |
-| :--------- | :------- | :---------------------------------------------------------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| data       | ✅       | any[]                                                             | none    | This property refers to suggestions availables                                                                                                                                              |
-| maxItems   | ❌       | number                                                            | 4       | This property refers to the max items from property data that will be presented as suggestions                                                                                              |
-| renderItem | ❌       | (value: any) => React.ReactElement<RelatedBoxSuggestionItemProps> | none    | This property refers to the component of each suggestion item, it return a property value that represent a item from data property, that way you can specify each property you want to use. |
+| property | required | type  | default | description                                    |
+| :------- | :------- | :---- | :------ | :--------------------------------------------- |
+| data     | ✅       | any[] | none    | This property refers to suggestions availables |
+
+| renderItem | ✅ | (value: any) => React.ReactElement<RelatedBoxSuggestionItemProps> | none | This property refers to the component of each suggestion item, it return a property value that represent a item from data property, that way you can specify each property you want to use. |
+|
+| maxItems | ❌ | number | 4 | This property refers to the max items from property data that will be presented as suggestions |
