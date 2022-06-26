@@ -6,6 +6,8 @@ export interface RelatedBoxTextInputProps
   customInput?: React.ReactElement<InputHTMLAttributes<HTMLInputElement>>;
   onChange?: (value: string) => void;
   typeDelay?: number;
+  data?: string;
+  setData?: (v: string) => void;
 }
 
 const RelatedBoxTextInput = (
@@ -13,17 +15,12 @@ const RelatedBoxTextInput = (
     customInput,
     onChange = () => null,
     typeDelay = 1200,
+    data,
+    setData = () => null,
     ...rest
   }: RelatedBoxTextInputProps,
   ref: LegacyRef<HTMLInputElement>
 ) => {
-  const { data, setData } = useTypeDelay({
-    delay: typeDelay,
-    callback: (data) => {
-      onChange(data);
-    },
-  });
-
   if (customInput) {
     return React.cloneElement(customInput, {
       ...customInput.props,
