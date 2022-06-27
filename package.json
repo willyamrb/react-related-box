@@ -1,6 +1,6 @@
 {
   "name": "react-related-box",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A React Component to help with complex search inputs",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
