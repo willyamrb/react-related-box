@@ -15,12 +15,12 @@ export default [
       {
         file: packageJson.main,
         format: "cjs",
-        sourcemap: true,
+        sourcemap: false,
       },
       {
         file: packageJson.module,
         format: "esm",
-        sourcemap: true,
+        sourcemap: false,
       },
     ],
     plugins: [
@@ -31,12 +31,11 @@ export default [
       postcss(),
       terser(),
     ],
-    external: ["react", "react-dom"],
   },
   {
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.css$/, /\.scss$/, "react", "react-dom"],
+    external: [/\.css$/, /\.scss$/],
   },
 ];
