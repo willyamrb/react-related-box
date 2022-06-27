@@ -49,6 +49,13 @@ export default function MyComponent() {
 }
 ```
 
+#### RelatedBox component props
+
+| property       | required | type    | default   | description                                                                                                                                  |
+| :------------- | :------- | :------ | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| objectKeyValue | ❌       | string  | undefined | If your data prop is an array of objects you can specify the object key that can be used to represent the selected value                     |
+| clearOnSelect  | ❌       | boolean | false     | This property refers to what behavior the RelatedBox.InputText should have when user select an option, if true it will clear the input value |
+
 #### RelatedBox.InputText component props
 
 RelatedBox.InputText contains all properties from normal JSX input component but with some additionals
@@ -62,9 +69,8 @@ RelatedBox.InputText contains all properties from normal JSX input component but
 
 RelatedBox.SuggestionsBox contains all properties from normal JSX div component but with some additionals
 
-| property       | required | type                               | default   | description                                                                                                                                                                                 |
-| :------------- | :------- | :--------------------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| data           | ✅       | any[]                              | none      | This property refers to suggestions availables                                                                                                                                              |
-| renderItem     | ✅       | (value: any) => React.ReactElement | none      | This property refers to the component of each suggestion item, it return a property value that represent a item from data property, that way you can specify each property you want to use. |
-| maxItems       | ❌       | number                             | 4         | This property refers to the max items from property data that will be presented as suggestions                                                                                              |
-| objectKeyValue | ❌       | string                             | undefined | If your data prop is an array of objects you can specify the object key that can be used to represent the selected value                                                                    |
+| property   | required | type                               | default | description                                                                                                                                                                                 |
+| :--------- | :------- | :--------------------------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| data       | ✅       | any[]                              | none    | This property refers to suggestions availables                                                                                                                                              |
+| renderItem | ✅       | (value: any) => React.ReactElement | none    | This property refers to the component of each suggestion item, it return a property value that represent a item from data property, that way you can specify each property you want to use. |
+| maxItems   | ❌       | number                             | 4       | This property refers to the max items from property data that will be presented as suggestions                                                                                              |
