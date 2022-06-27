@@ -9,7 +9,7 @@ interface useTypeDelayProps {
 const useTypeDelay = ({
   defaultValue = "",
   callback,
-  delay = 1200,
+  delay = 600,
 }: useTypeDelayProps) => {
   const [data, setData] = useState<string>(defaultValue);
 
