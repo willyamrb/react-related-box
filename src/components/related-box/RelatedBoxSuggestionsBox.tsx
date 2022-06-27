@@ -9,7 +9,6 @@ export interface RelatedBoxSuggestionsBoxProps
   isOpen?: boolean;
   onClose?: (v: any) => void;
   data: any[];
-  objectKeyValue?: string;
   maxItems?: number;
   renderItem: (value: any) => React.ReactElement<RelatedBoxSuggestionItemProps>;
 }
@@ -21,7 +20,6 @@ const RelatedBoxSuggestionsBox: React.FC<RelatedBoxSuggestionsBoxProps> = ({
   onClose = () => null,
   renderItem,
   maxItems = 4,
-  objectKeyValue,
   ...rest
 }) => {
   const onSelect = (value: any) => {
