@@ -1,4 +1,4 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import RelatedBoxTextInput, {
   RelatedBoxTextInputProps,
 } from "./RelatedBoxTextInput";
@@ -9,7 +9,7 @@ import RelatedBoxSuggestionsBox, {
 import useDisclosure from "../../hooks/useDisclosure.hook";
 import useTypeDelay from "../../hooks/useTypeDelay.hook";
 
-interface RelatedBoxComponentProps {
+interface RelatedBoxComponentProps extends HTMLAttributes<HTMLDivElement> {
   objectKeyValue?: string;
   clearOnSelect?: boolean;
   children: React.ReactElement<
@@ -26,6 +26,7 @@ const RelatedBox: RelatedBoxProps = ({
   children,
   objectKeyValue,
   clearOnSelect = false,
+  ...rest
 }) => {
   if (!Array.isArray(children))
     throw new Error("Must be more than 1 child inside RelatedBox Component!");
@@ -73,7 +74,13 @@ const RelatedBox: RelatedBoxProps = ({
   };
 
   return (
-    <div className="related-box" tabIndex={1} onFocus={onOpen} onBlur={onClose}>
+    <div
+      className="related-box"
+      {...rest}
+      tabIndex={1}
+      onFocus={onOpen}
+      onBlur={onClose}
+    >
       {React.cloneElement<RelatedBoxTextInputProps>(textInput, {
         ...textInput.props,
         data,
