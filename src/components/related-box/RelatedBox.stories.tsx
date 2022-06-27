@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof RelatedBox>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-export const SimpleData: ComponentStory<typeof RelatedBox> = (args) => {
+const SimpleData: ComponentStory<typeof RelatedBox> = (args) => {
   const allData = ["will", "mathew", "john", "maria"];
 
   const [query, setQuery] = useState("");
@@ -32,7 +32,7 @@ export const SimpleData: ComponentStory<typeof RelatedBox> = (args) => {
   );
 };
 
-export const ArrayOfObjects: ComponentStory<typeof RelatedBox> = (args) => {
+const ComplexData: ComponentStory<typeof RelatedBox> = (args) => {
   const allData = [
     {
       name: "will",
@@ -66,7 +66,6 @@ export const ArrayOfObjects: ComponentStory<typeof RelatedBox> = (args) => {
       />
       <RelatedBox.SuggestionsBox
         data={filteredData}
-        objectKeyValue="name"
         onSelectItem={(i) => console.log(i)}
         renderItem={(v) => <div style={{ padding: "5px 0px" }}>{v.name}</div>}
       />
@@ -74,6 +73,14 @@ export const ArrayOfObjects: ComponentStory<typeof RelatedBox> = (args) => {
   );
 };
 
-// export const Default = SimpleData.bind({});
+export const Default = SimpleData.bind({});
 // // More on args: https://storybook.js.org/docs/react/writing-stories/args
-// Default.args = {};
+Default.args = {
+  clearOnSelect: false,
+};
+
+export const ArrayOfObjects = ComplexData.bind({});
+ArrayOfObjects.args = {
+  clearOnSelect: false,
+  objectKeyValue: "name",
+};
