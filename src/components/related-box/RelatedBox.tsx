@@ -10,6 +10,8 @@ import useDisclosure from "../../hooks/useDisclosure.hook";
 import useTypeDelay from "../../hooks/useTypeDelay.hook";
 
 interface RelatedBoxComponentProps {
+  objectKeyValue?: string;
+  clearOnSelect?: boolean;
   children: React.ReactElement<
     RelatedBoxTextInputProps & RelatedBoxSuggestionsBoxProps
   >[];
@@ -20,7 +22,11 @@ export interface RelatedBoxProps extends React.FC<RelatedBoxComponentProps> {
   SuggestionsBox: React.FC<RelatedBoxSuggestionsBoxProps>;
 }
 
-const RelatedBox: RelatedBoxProps = ({ children }) => {
+const RelatedBox: RelatedBoxProps = ({
+  children,
+  objectKeyValue,
+  clearOnSelect = false,
+}) => {
   if (!Array.isArray(children))
     throw new Error("Must be more than 1 child inside RelatedBox Component!");
 
@@ -49,9 +55,12 @@ const RelatedBox: RelatedBoxProps = ({ children }) => {
   const onSelect = (v: any) => {
     onClose();
 
-    if (typeof v === "object") {
-      const objectKeyValue = suggestionsBox.props.objectKeyValue;
+    if (clearOnSelect) {
+      setData("");
+      return;
+    }
 
+    if (typeof v === "object") {
       if (!objectKeyValue)
         return console.warn(
           "to 'data' objects you need to specify the 'objectKeyValue' prop in RelatedBox.SuggestionsBox component, that way it will show the selected value"
