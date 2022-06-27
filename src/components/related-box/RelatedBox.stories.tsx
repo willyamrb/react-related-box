@@ -32,6 +32,43 @@ const SimpleData: ComponentStory<typeof RelatedBox> = (args) => {
   );
 };
 
+const CustomRelatedBoxSuggestionBox: ComponentStory<typeof RelatedBox> = (
+  args
+) => {
+  const allData = ["will", "mathew", "john", "maria"];
+
+  const [query, setQuery] = useState("");
+
+  const filteredData = allData.filter((name) => name.startsWith(query));
+
+  return (
+    <RelatedBox {...args}>
+      <RelatedBox.InputText
+        placeholder="Type something..."
+        onChange={(v) => setQuery(v)}
+      />
+      <RelatedBox.SuggestionsBox
+        customComponent={(items) => (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              backgroundColor: "#b6b6b6",
+            }}
+          >
+            <p>Items</p>
+            {items}
+          </div>
+        )}
+        data={filteredData}
+        onSelectItem={(i) => console.log(i)}
+        renderItem={(v) => <div style={{ padding: "5px 0px" }}>{v}</div>}
+      />
+    </RelatedBox>
+  );
+};
+
 const ComplexData: ComponentStory<typeof RelatedBox> = (args) => {
   const allData = [
     {
@@ -83,4 +120,9 @@ export const ArrayOfObjects = ComplexData.bind({});
 ArrayOfObjects.args = {
   clearOnSelect: false,
   objectKeyValue: "name",
+};
+
+export const CustomSuggestionBox = CustomRelatedBoxSuggestionBox.bind({});
+CustomSuggestionBox.args = {
+  clearOnSelect: false,
 };
