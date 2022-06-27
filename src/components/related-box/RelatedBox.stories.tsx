@@ -18,7 +18,7 @@ const SimpleData: ComponentStory<typeof RelatedBox> = (args) => {
   const filteredData = allData.filter((name) => name.startsWith(query));
 
   return (
-    <RelatedBox {...args}>
+    <RelatedBox style={{ width: "300px" }} {...args}>
       <RelatedBox.InputText
         placeholder="Type something..."
         onChange={(v) => setQuery(v)}
@@ -42,7 +42,7 @@ const CustomRelatedBoxSuggestionBox: ComponentStory<typeof RelatedBox> = (
   const filteredData = allData.filter((name) => name.startsWith(query));
 
   return (
-    <RelatedBox {...args}>
+    <RelatedBox style={{ width: "300px" }} {...args}>
       <RelatedBox.InputText
         placeholder="Type something..."
         onChange={(v) => setQuery(v)}
@@ -96,7 +96,7 @@ const ComplexData: ComponentStory<typeof RelatedBox> = (args) => {
   );
 
   return (
-    <RelatedBox {...args}>
+    <RelatedBox style={{ width: "300px" }} {...args}>
       <RelatedBox.InputText
         placeholder="Type something..."
         onChange={(v) => setQuery(v)}
