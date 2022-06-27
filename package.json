@@ -1,6 +1,6 @@
 {
   "name": "react-related-box",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "A React Component to help with complex search inputs",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -20,7 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/willyamdev/react-related-box"
   },
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
@@ -68,7 +68,7 @@
     "style-loader": "^3.3.1",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5",
-    "webpack": "^5.69.1"
+    "webpack": "^5.73.0"
   },
   "peerDependencies": {
     "react": ">=17",
