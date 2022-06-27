@@ -7,8 +7,9 @@ export interface RelatedBoxSuggestionsBoxProps
   extends HTMLAttributes<HTMLDivElement> {
   onSelectItem: (value: any) => void;
   isOpen?: boolean;
-  onClose?: (v: string) => void;
+  onClose?: (v: any) => void;
   data: any[];
+  objectKeyValue?: string;
   maxItems?: number;
   renderItem: (value: any) => React.ReactElement<RelatedBoxSuggestionItemProps>;
 }
@@ -20,6 +21,7 @@ const RelatedBoxSuggestionsBox: React.FC<RelatedBoxSuggestionsBoxProps> = ({
   onClose = () => null,
   renderItem,
   maxItems = 4,
+  objectKeyValue,
   ...rest
 }) => {
   const onSelect = (value: any) => {
@@ -40,18 +42,16 @@ const RelatedBoxSuggestionsBox: React.FC<RelatedBoxSuggestionsBoxProps> = ({
           left: 0,
         }}
       >
-        {data
-          .filter((_, i) => i < maxItems)
-          .map((d, i) =>
-            React.createElement<RelatedBoxSuggestionItemProps>(
-              RelatedBoxSuggestionItem,
-              {
-                key: i,
-                onClick: () => onSelect(data[i]),
-              },
-              renderItem(d)
-            )
-          )}
+        {data.slice(0, maxItems).map((d, i) =>
+          React.createElement<RelatedBoxSuggestionItemProps>(
+            RelatedBoxSuggestionItem,
+            {
+              key: i,
+              onClick: () => onSelect(data[i]),
+            },
+            renderItem(d)
+          )
+        )}
       </div>
     </div>
   );

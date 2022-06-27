@@ -46,6 +46,23 @@ const RelatedBox: RelatedBoxProps = ({ children }) => {
     },
   });
 
+  const onSelect = (v: any) => {
+    onClose();
+
+    if (typeof v === "object") {
+      const objectKeyValue = suggestionsBox.props.objectKeyValue;
+
+      if (!objectKeyValue)
+        return console.warn(
+          "to 'data' objects you need to specify the 'objectKeyValue' prop in RelatedBox.SuggestionsBox component, that way it will show the selected value"
+        );
+
+      setData(v[objectKeyValue]);
+    } else {
+      setData(v);
+    }
+  };
+
   return (
     <div className="related-box" tabIndex={1} onFocus={onOpen} onBlur={onClose}>
       {React.cloneElement<RelatedBoxTextInputProps>(textInput, {
@@ -56,10 +73,7 @@ const RelatedBox: RelatedBoxProps = ({ children }) => {
       {React.cloneElement<RelatedBoxSuggestionsBoxProps>(suggestionsBox, {
         ...suggestionsBox.props,
         isOpen,
-        onClose: (v) => {
-          onClose();
-          setData(v);
-        },
+        onClose: onSelect,
       })}
     </div>
   );
