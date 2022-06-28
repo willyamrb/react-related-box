@@ -1,5 +1,4 @@
 import React, { forwardRef, InputHTMLAttributes, LegacyRef } from "react";
-import useTypeDelay from "../../hooks/useTypeDelay.hook";
 
 export interface RelatedBoxTextInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
@@ -14,7 +13,7 @@ const RelatedBoxTextInput = (
   {
     customInput,
     onChange = () => null,
-    typeDelay = 1200,
+    typeDelay = 600,
     data,
     setData = () => null,
     ...rest
