@@ -37,12 +37,12 @@ export default function MyComponent() {
     <RelatedBox>
       <RelatedBox.InputText
         placeholder="Type something..."
-        onChange={(v) => setQuery(v)}
+        onChange={(value) => setQuery(value)}
       />
       <RelatedBox.SuggestionsBox
         data={filteredData}
-        onSelectItem={(i) => console.log(i)}
-        renderItem={(v) => <div style={{ padding: "5px 0px" }}>{v}</div>}
+        onSelectItem={(value) => console.log(value)}
+        renderItem={(item) => <div style={{ padding: "5px 0px" }}>{item}</div>}
       />
     </RelatedBox>
   );
@@ -51,10 +51,12 @@ export default function MyComponent() {
 
 #### RelatedBox component props
 
-| property       | required | type    | default   | description                                                                                                                                  |
-| :------------- | :------- | :------ | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
-| objectKeyValue | ❌       | string  | undefined | If your data prop is an array of objects you can specify the object key that can be used to represent the selected value                     |
-| clearOnSelect  | ❌       | boolean | false     | This property refers to what behavior the RelatedBox.InputText should have when user select an option, if true it will clear the input value |
+RelatedBox contains all properties from normal JSX div component but with some additionals
+
+| property       | required | type    | default   | description                                                                                                                                                       |
+| :------------- | :------- | :------ | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| objectKeyValue | ❌       | string  | undefined | If your data prop from RelatedBox.SuggestionsBox component is an array of objects you can specify the object key that can be used to represent the selected value |
+| clearOnSelect  | ❌       | boolean | false     | This property refers to what behavior the RelatedBox.InputText should have when user select an option, if true it will clear the input value                      |
 
 #### RelatedBox.InputText component props
 
@@ -62,7 +64,7 @@ RelatedBox.InputText contains all properties from normal JSX input component but
 
 | property    | required | type                                                      | default | description                                                                                       |
 | :---------- | :------- | :-------------------------------------------------------- | :------ | :------------------------------------------------------------------------------------------------ |
-| typeDelay   | ❌       | number                                                    | 1200    | This property refers to the delay when user types something, if you do not want delay put it to 0 |
+| typeDelay   | ❌       | number                                                    | 600     | This property refers to the delay when user types something, if you do not want delay put it to 0 |
 | customInput | ❌       | React.ReactElement<InputHTMLAttributes<HTMLInputElement>> | none    | If you want a custom text input you can use this property to create a custom input                |
 
 #### RelatedBox.SuggestionsBox component props
